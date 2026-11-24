@@ -1,0 +1,14 @@
+# competition data is downloaded from Kaggle (see README) - not committed
+data/
+*.csv
+# personal notes, drafts and the Kaggle submission file
+notes/
+# python / jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
+.streamlit/secrets.toml
+.DS_Store
