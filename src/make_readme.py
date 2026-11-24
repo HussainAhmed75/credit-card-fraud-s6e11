@@ -28,14 +28,15 @@ order = ["Always 'not fraud'", "One feature (merchant risk score)", "Red-flag ru
 cv_rows = "\n".join(row(n, M["cv"][n]) for n in order if n in M["cv"])
 ho_rows = "\n".join(row(n, M["holdout"][n]) for n in order if n in M["holdout"])
 g = M["gain_holdout"][H["chosen_model"]]
-gain_row = " | ".join(f"{k}: **{v:.1f}%**" for k, v in g.items())
+gain_row = " | ".join(f"{k}: **{v:.1f}%**" for k, v in sorted(g.items(), key=lambda kv: float(kv[0].rstrip("%"))))
 case_rows = "\n".join(f"| {c['case']} | {c['predicted_prob_pct']}% | {'fraud' if c['actual'] else 'not fraud'} | ${c['amount_usd']:,.2f} | "
                       f"{c['merchant_category']} | {c['auth_method']} | {c['red_flags']} | {', '.join(c['top_shap'])} |"
                       for c in M["case_studies"])
 lb_line = ""
 if LB:
     lb_line = (f"\n**Kaggle public leaderboard:** {LB['public_score']:.5f} (scored by Kaggle on ~20% of the test set, "
-               f"checked on {LB['checked_on']}; the private score is only revealed after the competition ends).\n")
+               f"checked on {LB['checked_on']}; the private score is only revealed after the competition ends). "
+               f"The #1 public score at that time was {LB['top_public_score_seen']:.5f}, so this is a solid, honest baseline, not a top-of-leaderboard entry.\n")
 
 readme = f"""# Catching credit-card fraud — an honest model for Kaggle Playground S6E11
 
@@ -84,7 +85,8 @@ A hand-made red-flag rule gets ROC AUC {H['rule_holdout_auc']:.4f} and catches {
 |---|---:|---:|---:|---:|---:|
 {cv_rows}
 
-Optuna ({T['n_trials']} trials, {T['tuning_folds']}-fold CV) moved LightGBM's CV AUC from {T['cv_auc_untuned']:.5f} to {T['cv_auc_tuned']:.5f}.
+XGBoost ({M['cv']['XGBoost']['roc_auc']:.4f}) and LightGBM ({M['cv']['LightGBM']['roc_auc']:.4f}) were practically tied before tuning;
+LightGBM was tuned because it trained faster in these runs. Optuna ({T['n_trials']} trials, {T['tuning_folds']}-fold CV) moved LightGBM's CV AUC from {T['cv_auc_untuned']:.5f} to {T['cv_auc_tuned']:.5f}.
 Chosen on CV: **{H['chosen_model']}** (CV AUC {H['cv_auc_chosen']:.5f}).
 
 ### Locked hold-out (scored once)
