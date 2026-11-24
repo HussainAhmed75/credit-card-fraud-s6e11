@@ -53,7 +53,8 @@ A hand-made red-flag rule gets ROC AUC 0.8471 and catches 21.2% at the same effo
 | LightGBM (tuned) | 0.9472 | 0.509 | 38.8% | 64.8% | 98.67% |
 | Blend: tuned LightGBM + LogReg (rank avg) | 0.9462 | 0.507 | 38.4% | 64.2% | — |
 
-Optuna (20 trials, 3-fold CV) moved LightGBM's CV AUC from 0.94630 to 0.94719.
+XGBoost (0.9466) and LightGBM (0.9463) were practically tied before tuning;
+LightGBM was tuned because it trained faster in these runs. Optuna (20 trials, 3-fold CV) moved LightGBM's CV AUC from 0.94630 to 0.94719.
 Chosen on CV: **LightGBM (tuned)** (CV AUC 0.94719).
 
 ### Locked hold-out (scored once)
@@ -70,7 +71,7 @@ Honest notes: a plain logistic regression (hold-out AUC 0.9405) is close to the 
 Accuracy is shown only to make a point: always saying "not fraud" scores 98.33%, and the tuned model at a 0.5 threshold scores 98.70%.
 The blend outputs ranks, not probabilities, so its accuracy is not meaningful.
 
-**Share of all fraud caught vs share of transactions reviewed (hold-out):** 0.5%: **25.5%** | 1.0%: **39.2%** | 10.0%: **81.8%** | 2.0%: **53.8%** | 5.0%: **70.8%**
+**Share of all fraud caught vs share of transactions reviewed (hold-out):** 0.5%: **25.5%** | 1.0%: **39.2%** | 2.0%: **53.8%** | 5.0%: **70.8%** | 10.0%: **81.8%**
 
 | | |
 |---|---|
