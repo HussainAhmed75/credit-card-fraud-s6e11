@@ -1,0 +1,185 @@
+{
+ "features": [
+  "amount_usd",
+  "hours_since_last_txn",
+  "txn_count_last_24h",
+  "distance_from_home_km",
+  "card_age_months",
+  "customer_age",
+  "account_balance_usd",
+  "cvv_retry_count",
+  "velocity_score",
+  "time_of_day_hour",
+  "day_of_week",
+  "merchant_risk_score",
+  "prior_disputes",
+  "is_foreign_transaction",
+  "is_new_merchant",
+  "used_vpn",
+  "ip_country_mismatch",
+  "billing_shipping_mismatch",
+  "is_ai_generated_scam_attempt",
+  "red_flag_count",
+  "amount_to_balance",
+  "log_amount",
+  "is_night",
+  "merchant_category",
+  "card_type",
+  "auth_method",
+  "channel",
+  "device_type"
+ ],
+ "categorical": [
+  "merchant_category",
+  "card_type",
+  "auth_method",
+  "channel",
+  "device_type"
+ ],
+ "categories": {
+  "merchant_category": [
+   "Crypto Exchange",
+   "Electronics",
+   "Fuel",
+   "Gaming",
+   "Gift Cards",
+   "Groceries",
+   "Healthcare",
+   "Online Retail",
+   "Restaurants",
+   "Streaming",
+   "Travel",
+   "Utilities"
+  ],
+  "card_type": [
+   "Amex",
+   "Discover",
+   "Mastercard",
+   "RuPay",
+   "Visa"
+  ],
+  "auth_method": [
+   "3D Secure",
+   "Biometric",
+   "No Authentication",
+   "OTP",
+   "PIN"
+  ],
+  "channel": [
+   "ATM",
+   "Contactless",
+   "In-App",
+   "Online",
+   "POS"
+  ],
+  "device_type": [
+   "ATM Machine",
+   "Android Phone",
+   "Mac",
+   "POS Terminal",
+   "Smart Watch",
+   "Tablet",
+   "Windows PC",
+   "iPhone"
+  ]
+ },
+ "boolean": [
+  "is_foreign_transaction",
+  "is_new_merchant",
+  "used_vpn",
+  "ip_country_mismatch",
+  "billing_shipping_mismatch",
+  "is_ai_generated_scam_attempt"
+ ],
+ "numeric_raw": [
+  "amount_usd",
+  "hours_since_last_txn",
+  "txn_count_last_24h",
+  "distance_from_home_km",
+  "card_age_months",
+  "customer_age",
+  "account_balance_usd",
+  "cvv_retry_count",
+  "velocity_score",
+  "time_of_day_hour",
+  "day_of_week",
+  "merchant_risk_score",
+  "prior_disputes"
+ ],
+ "defaults": {
+  "amount_usd": 27.25,
+  "hours_since_last_txn": 4.73,
+  "txn_count_last_24h": 3.0,
+  "distance_from_home_km": 10.22,
+  "card_age_months": 47.0,
+  "customer_age": 52.0,
+  "account_balance_usd": 1382.74,
+  "cvv_retry_count": 0.0,
+  "velocity_score": 18.6,
+  "time_of_day_hour": 12.0,
+  "day_of_week": 3.0,
+  "merchant_risk_score": 34.2,
+  "prior_disputes": 0.0,
+  "merchant_category": "Online Retail",
+  "card_type": "Visa",
+  "auth_method": "3D Secure",
+  "channel": "Online",
+  "device_type": "Android Phone"
+ },
+ "ranges": {
+  "amount_usd": [
+   2.42,
+   1694.19
+  ],
+  "hours_since_last_txn": [
+   0.01,
+   41.01
+  ],
+  "txn_count_last_24h": [
+   0.0,
+   8.0
+  ],
+  "distance_from_home_km": [
+   0.01,
+   50.96
+  ],
+  "card_age_months": [
+   30.0,
+   65.0
+  ],
+  "customer_age": [
+   18.0,
+   81.0
+  ],
+  "account_balance_usd": [
+   394.57,
+   57720.99
+  ],
+  "cvv_retry_count": [
+   0.0,
+   2.0
+  ],
+  "velocity_score": [
+   0.0,
+   55.5
+  ],
+  "time_of_day_hour": [
+   0.0,
+   23.0
+  ],
+  "day_of_week": [
+   0.0,
+   6.0
+  ],
+  "merchant_risk_score": [
+   0.0,
+   89.4
+  ],
+  "prior_disputes": [
+   0.0,
+   2.0
+  ]
+ },
+ "review_threshold_prob": 0.35839029577848736,
+ "fraud_rate": 0.016699525687182123
+}

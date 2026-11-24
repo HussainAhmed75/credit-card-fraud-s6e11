@@ -1,0 +1,392 @@
+{
+  "calibration_lgbm_holdout": {
+    "brier": 0.01089,
+    "brier_constant_rate": 0.01642,
+    "max_abs_gap_pct_points": 0.18,
+    "top_bin_mean_pred_pct": 13.55,
+    "top_bin_observed_pct": 13.66
+  },
+  "case_studies": [
+    {
+      "actual": 1,
+      "amount_usd": 49.12,
+      "auth_method": "No Authentication",
+      "case": "caught_fraud",
+      "id": 484297,
+      "merchant_category": "Gaming",
+      "merchant_risk_score": 61.3,
+      "predicted_prob_pct": 74.13,
+      "red_flags": 2,
+      "top_shap": [
+        "red_flag_count (+)",
+        "velocity_score (+)",
+        "auth_method (+)"
+      ]
+    },
+    {
+      "actual": 1,
+      "amount_usd": 761.98,
+      "auth_method": "Biometric",
+      "case": "missed_fraud",
+      "id": 616974,
+      "merchant_category": "Crypto Exchange",
+      "merchant_risk_score": 69.4,
+      "predicted_prob_pct": 6.06,
+      "red_flags": 2,
+      "top_shap": [
+        "merchant_risk_score (+)",
+        "red_flag_count (+)",
+        "auth_method (-)"
+      ]
+    },
+    {
+      "actual": 0,
+      "amount_usd": 36.61,
+      "auth_method": "3D Secure",
+      "case": "false_alarm",
+      "id": 253528,
+      "merchant_category": "Gaming",
+      "merchant_risk_score": 65.4,
+      "predicted_prob_pct": 48.49,
+      "red_flags": 1,
+      "top_shap": [
+        "merchant_risk_score (+)",
+        "velocity_score (+)",
+        "red_flag_count (+)"
+      ]
+    }
+  ],
+  "chosen_model": "LightGBM (tuned)",
+  "config": {
+    "calibration_bins": 10,
+    "holdout_frac_pct": 20,
+    "n_folds": 5,
+    "optuna_trials": 20,
+    "review_grid_pct": [
+      0.5,
+      1,
+      2,
+      5,
+      10
+    ],
+    "rf_subsample_rows": 200000,
+    "seed": 42,
+    "shap_sample_rows": 5000,
+    "top_review_pct": 1
+  },
+  "cv": {
+    "Always 'not fraud'": {
+      "accuracy_at_0.5": 98.33008,
+      "brier": 0.0167,
+      "log_loss": 0.23071,
+      "n": 559968.0,
+      "pr_auc": 0.0167,
+      "precision_at_top1pct": 1.46429,
+      "recall_at_top1pct": 0.87691,
+      "roc_auc": 0.5
+    },
+    "Blend: tuned LightGBM + LogReg (rank avg)": {
+      "accuracy_at_0.5": null,
+      "brier": 0.31618,
+      "log_loss": 0.9244,
+      "n": 559968.0,
+      "pr_auc": 0.50654,
+      "precision_at_top1pct": 64.19643,
+      "recall_at_top1pct": 38.44509,
+      "roc_auc": 0.94621
+    },
+    "LightGBM": {
+      "accuracy_at_0.5": 98.67135,
+      "brier": 0.01112,
+      "log_loss": 0.04597,
+      "n": 559968.0,
+      "pr_auc": 0.5017,
+      "precision_at_top1pct": 64.33929,
+      "recall_at_top1pct": 38.53064,
+      "roc_auc": 0.9463
+    },
+    "LightGBM (tuned)": {
+      "accuracy_at_0.5": 98.67135,
+      "brier": 0.01102,
+      "log_loss": 0.04553,
+      "n": 559968.0,
+      "pr_auc": 0.50943,
+      "precision_at_top1pct": 64.75,
+      "recall_at_top1pct": 38.7766,
+      "roc_auc": 0.94719
+    },
+    "Logistic Regression": {
+      "accuracy_at_0.5": 98.64635,
+      "brier": 0.01132,
+      "log_loss": 0.04705,
+      "n": 559968.0,
+      "pr_auc": 0.48741,
+      "precision_at_top1pct": 62.48214,
+      "recall_at_top1pct": 37.41846,
+      "roc_auc": 0.94225
+    },
+    "One feature (merchant risk score)": {
+      "accuracy_at_0.5": null,
+      "brier": 0.98091,
+      "log_loss": 13.55139,
+      "n": 559968.0,
+      "pr_auc": 0.05329,
+      "precision_at_top1pct": 11.98214,
+      "recall_at_top1pct": 7.1757,
+      "roc_auc": 0.74974
+    },
+    "Random Forest": {
+      "accuracy_at_0.5": 98.5392,
+      "brier": 0.01216,
+      "log_loss": 0.05157,
+      "n": 559968.0,
+      "pr_auc": 0.42561,
+      "precision_at_top1pct": 56.98214,
+      "recall_at_top1pct": 34.12469,
+      "roc_auc": 0.92631
+    },
+    "Red-flag rule": {
+      "accuracy_at_0.5": null,
+      "brier": 0.98141,
+      "log_loss": 13.55834,
+      "n": 559968.0,
+      "pr_auc": 0.19626,
+      "precision_at_top1pct": 33.67857,
+      "recall_at_top1pct": 20.16897,
+      "roc_auc": 0.83861
+    },
+    "XGBoost": {
+      "accuracy_at_0.5": 98.66403,
+      "brier": 0.0111,
+      "log_loss": 0.04584,
+      "n": 559968.0,
+      "pr_auc": 0.50332,
+      "precision_at_top1pct": 64.39286,
+      "recall_at_top1pct": 38.56272,
+      "roc_auc": 0.94662
+    }
+  },
+  "data": {
+    "duplicate_rows_train": 0,
+    "fraud_rate_pct": 1.6699525687182124,
+    "missing_values_test": 0,
+    "missing_values_train": 0,
+    "n_fraud": 11689,
+    "n_raw_features": 24,
+    "test_rows": 299984,
+    "train_rows": 699960,
+    "train_rows_identical_to_a_test_row": 0
+  },
+  "facts": {
+    "ai_scam_flag_fraud_pct": 15.22,
+    "ai_scam_flag_n": 2299,
+    "best_single_feature": "merchant_risk_score",
+    "best_single_feature_auc": 0.7489,
+    "biometric_fraud_pct": 0.5,
+    "fraud_rate_pct": 1.67,
+    "ip_match_fraud_pct": 1.43,
+    "ip_mismatch_fraud_pct": 16.5,
+    "majority_class_accuracy_pct": 98.33,
+    "no_auth_fraud_pct": 6.44,
+    "no_auth_vs_biometric_x": 12.9,
+    "riskiest_category": "Gift Cards",
+    "riskiest_category_pct": 7.3,
+    "safest_category": "Online Retail",
+    "safest_category_pct": 1.11,
+    "three_plus_flags_fraud_pct": 54.62,
+    "three_plus_flags_share_pct": 0.2,
+    "time_of_day_auc": 0.5002,
+    "zero_flags_fraud_pct": 0.7
+  },
+  "flag_rates": {
+    "billing_shipping_mismatch": {
+      "n_with": 9054,
+      "with_pct": 12.989,
+      "without_pct": 1.522
+    },
+    "ip_country_mismatch": {
+      "n_with": 11312,
+      "with_pct": 16.496,
+      "without_pct": 1.426
+    },
+    "is_ai_generated_scam_attempt": {
+      "n_with": 2299,
+      "with_pct": 15.224,
+      "without_pct": 1.625
+    },
+    "is_foreign_transaction": {
+      "n_with": 12098,
+      "with_pct": 12.572,
+      "without_pct": 1.478
+    },
+    "is_new_merchant": {
+      "n_with": 106720,
+      "with_pct": 4.734,
+      "without_pct": 1.119
+    },
+    "used_vpn": {
+      "n_with": 23665,
+      "with_pct": 6.55,
+      "without_pct": 1.499
+    }
+  },
+  "gain_holdout": {
+    "LightGBM (tuned)": {
+      "0.5%": 25.53,
+      "1.0%": 39.18,
+      "10.0%": 81.82,
+      "2.0%": 53.81,
+      "5.0%": 70.79
+    },
+    "One feature (merchant risk score)": {
+      "0.5%": 1.97,
+      "1.0%": 6.2,
+      "10.0%": 32.25,
+      "2.0%": 12.75,
+      "5.0%": 20.87
+    },
+    "Red-flag rule": {
+      "0.5%": 14.2,
+      "1.0%": 21.17,
+      "10.0%": 59.02,
+      "2.0%": 26.99,
+      "5.0%": 43.71
+    }
+  },
+  "headline": {
+    "chosen_model": "LightGBM (tuned)",
+    "cv_auc_chosen": 0.94719,
+    "holdout_auc": 0.94601,
+    "holdout_pr_auc": 0.52019,
+    "holdout_precision_top1pct": 65.42857,
+    "holdout_recall_top1pct": 39.17879,
+    "lgbm_holdout_accuracy_at_05": 98.70135,
+    "lgbm_holdout_auc": 0.94601,
+    "lift_top1pct_x": 39.2,
+    "logreg_holdout_auc": 0.94048,
+    "majority_holdout_accuracy": 98.3299,
+    "one_feature_holdout_auc": 0.74573,
+    "rule_holdout_auc": 0.84711,
+    "rule_recall_top1pct": 21.21471
+  },
+  "holdout": {
+    "Always 'not fraud'": {
+      "accuracy_at_0.5": 98.3299,
+      "brier": 0.0167,
+      "log_loss": 0.23073,
+      "n": 139992.0,
+      "pr_auc": 0.0167,
+      "precision_at_top1pct": 1.42857,
+      "recall_at_top1pct": 0.85543,
+      "roc_auc": 0.5
+    },
+    "Blend: tuned LightGBM + LogReg (rank avg)": {
+      "accuracy_at_0.5": null,
+      "brier": 0.3162,
+      "log_loss": 0.92433,
+      "n": 139992.0,
+      "pr_auc": 0.51676,
+      "precision_at_top1pct": 65.78571,
+      "recall_at_top1pct": 39.39264,
+      "roc_auc": 0.94477
+    },
+    "LightGBM (tuned)": {
+      "accuracy_at_0.5": 98.70135,
+      "brier": 0.01089,
+      "log_loss": 0.0455,
+      "n": 139992.0,
+      "pr_auc": 0.52019,
+      "precision_at_top1pct": 65.42857,
+      "recall_at_top1pct": 39.17879,
+      "roc_auc": 0.94601
+    },
+    "Logistic Regression": {
+      "accuracy_at_0.5": 98.68135,
+      "brier": 0.01118,
+      "log_loss": 0.04708,
+      "n": 139992.0,
+      "pr_auc": 0.49706,
+      "precision_at_top1pct": 64.14286,
+      "recall_at_top1pct": 38.4089,
+      "roc_auc": 0.94048
+    },
+    "One feature (merchant risk score)": {
+      "accuracy_at_0.5": null,
+      "brier": 0.98101,
+      "log_loss": 13.55279,
+      "n": 139992.0,
+      "pr_auc": 0.05055,
+      "precision_at_top1pct": 10.35714,
+      "recall_at_top1pct": 6.20188,
+      "roc_auc": 0.74573
+    },
+    "Red-flag rule": {
+      "accuracy_at_0.5": null,
+      "brier": 0.98144,
+      "log_loss": 13.5588,
+      "n": 139992.0,
+      "pr_auc": 0.21012,
+      "precision_at_top1pct": 35.42857,
+      "recall_at_top1pct": 21.21471,
+      "roc_auc": 0.84711
+    }
+  },
+  "review_threshold_prob_pct": 35.839,
+  "shap_top10": {
+    "auth_method": 0.3615,
+    "customer_age": 0.3906,
+    "cvv_retry_count": 0.347,
+    "hours_since_last_txn": 0.1624,
+    "merchant_category": 0.1315,
+    "merchant_risk_score": 0.7878,
+    "prior_disputes": 0.0957,
+    "red_flag_count": 0.4005,
+    "txn_count_last_24h": 0.1016,
+    "velocity_score": 0.7712
+  },
+  "single_feature_auc": {
+    "account_balance_usd": 0.5063,
+    "amount_usd": 0.5448,
+    "card_age_months": 0.5019,
+    "customer_age": 0.6247,
+    "cvv_retry_count": 0.7081,
+    "day_of_week": 0.5081,
+    "distance_from_home_km": 0.5039,
+    "hours_since_last_txn": 0.5682,
+    "merchant_risk_score": 0.7489,
+    "prior_disputes": 0.5322,
+    "time_of_day_hour": 0.5002,
+    "txn_count_last_24h": 0.6203,
+    "velocity_score": 0.7108
+  },
+  "splits": {
+    "dev_fraud_pct": 1.67,
+    "dev_rows": 559968,
+    "holdout_fraud_pct": 1.67,
+    "holdout_rows": 139992,
+    "n_features": 28,
+    "n_folds": 5
+  },
+  "submission": {
+    "model": "LightGBM (tuned)",
+    "n_estimators": 778,
+    "rows": 299984
+  },
+  "tuning": {
+    "best_params": {
+      "colsample_bytree": 0.354613,
+      "min_child_samples": 708,
+      "min_split_gain": 0.403451,
+      "num_leaves": 9,
+      "reg_lambda": 0.798109,
+      "subsample": 0.81858
+    },
+    "cv_auc_tuned": 0.94719,
+    "cv_auc_untuned": 0.9463,
+    "family": "LightGBM",
+    "mean_best_iteration": 707.6,
+    "n_trials": 20,
+    "tuning_folds": 3,
+    "tuning_learning_rate": 0.1
+  }
+}
