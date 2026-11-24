@@ -12,6 +12,8 @@ Reviewing the riskiest 1% of transactions catches **39.2%** of all fraud, and
 **65.4%** of the reviewed cases are real fraud (39.2x the base rate).
 A hand-made red-flag rule gets ROC AUC 0.8471 and catches 21.2% at the same effort.
 
+**Kaggle public leaderboard:** 0.94786 (scored by Kaggle on ~20% of the test set, checked on 2026-11-24; the private score is only revealed after the competition ends). The #1 public score at that time was 0.97051, so this is a solid, honest baseline, not a top-of-leaderboard entry.
+
 ![](figures/06_model_comparison.png)
 
 ## What the data says
