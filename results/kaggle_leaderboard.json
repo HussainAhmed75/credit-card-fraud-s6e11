@@ -1,0 +1,8 @@
+{
+  "competition": "playground-series-s6e11",
+  "submission": "Credit Card Fraud: Honest Model S6E11 - Version 1",
+  "public_score": 0.94786,
+  "note": "Score shown by Kaggle on the public leaderboard (about 20% of the test set). Copied by hand from the Kaggle submissions page; the private score is revealed after the competition closes. top_public_score_seen is the #1 public score on the leaderboard when it was checked.",
+  "checked_on": "2026-11-24",
+  "top_public_score_seen": 0.97051
+}
